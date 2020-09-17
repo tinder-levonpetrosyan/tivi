@@ -87,6 +87,7 @@ subprojects {
                 }
 
                 if ((group.startsWith('androidx.ui') || group.startsWith('androidx.compose'))
+                        && !group.equals('androidx.compose.navigation')
                         && Libs.AndroidX.Compose.version.endsWith('SNAPSHOT')) {
                     // If we're using a SNAPSHOT version of Compose, we need to  force all
                     // the SNAPSHOT version. We may be using other dependencies which rely

@@ -54,7 +54,7 @@ import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
-internal class ShowDetailsFragmentViewModel @AssistedInject constructor(
+class ShowDetailsFragmentViewModel @AssistedInject constructor(
     @Assisted initialState: ShowDetailsViewState,
     private val updateShowDetails: UpdateShowDetails,
     observeShowDetails: ObserveShowDetails,
@@ -280,7 +280,7 @@ internal class ShowDetailsFragmentViewModel @AssistedInject constructor(
      * Factory to allow assisted injection of [ShowDetailsFragmentViewModel] with an initial state.
      */
     @AssistedInject.Factory
-    internal interface Factory {
+    interface Factory {
         fun create(initialState: ShowDetailsViewState): ShowDetailsFragmentViewModel
     }
 }

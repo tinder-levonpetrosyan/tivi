@@ -160,7 +160,7 @@ class EpisodeDetailsViewModel @AssistedInject constructor(
     }
 
     @AssistedInject.Factory
-    internal interface Factory {
+    interface Factory {
         fun create(initialState: EpisodeDetailsViewState): EpisodeDetailsViewModel
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Google, Inc.
+ * Copyright 2020 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,26 +21,11 @@ apply plugin: 'com.android.library'
 
 apply plugin: 'kotlin-android'
 
-apply plugin: 'kotlin-kapt'
-kapt {
-    correctErrorTypes = true
-    useBuildCache = true
-}
-
-apply plugin: 'dagger.hilt.android.plugin'
-
 android {
     compileSdkVersion buildConfig.compileSdk
 
     defaultConfig {
         minSdkVersion buildConfig.minSdk
-
-        // Needed because we're using AssistedInject to inject our ViewModel
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments["dagger.hilt.disableModulesHaveInstallInCheck"] = "true"
-            }
-        }
     }
 
     compileOptions {
@@ -65,46 +50,13 @@ android {
 }
 
 dependencies {
-    implementation project(':base')
-    implementation project(':base-android')
-    implementation project(':domain')
-    implementation project(':common-ui-view')
     implementation project(':common-ui-compose')
-    implementation project(':common-compose-navigation')
-
-    implementation Libs.AndroidX.Lifecycle.livedata
-    implementation Libs.AndroidX.Lifecycle.viewmodel
-
-    implementation Libs.AndroidX.coreKtx
-
-    implementation Libs.AndroidX.Fragment.fragment
-    implementation Libs.AndroidX.Fragment.fragmentKtx
 
     // Temporary workaround (see above)
     kotlinCompilerPlugin Libs.AndroidX.Compose.compiler
 
     implementation Libs.AndroidX.Compose.runtime
-    implementation Libs.AndroidX.Compose.foundation
-    implementation Libs.AndroidX.Compose.ui
-    implementation Libs.AndroidX.Compose.layout
-    implementation Libs.AndroidX.Compose.material
-    implementation Libs.AndroidX.Compose.animation
-    implementation Libs.AndroidX.Compose.tooling
-    implementation Libs.AndroidX.Compose.livedata
-
-    implementation Libs.Mdc.material
-    implementation Libs.Mdc.composeThemeAdapter
-
-    implementation Libs.Accompanist.coil
+    api Libs.AndroidX.Compose.navigation
 
     implementation Libs.Kotlin.stdlib
-
-    implementation Libs.Hilt.library
-    kapt Libs.Hilt.compiler
-
-    compileOnly Libs.AssistedInject.annotationDagger2
-    kapt Libs.AssistedInject.processorDagger2
-
-    implementation Libs.AndroidX.Hilt.viewmodel
-    kapt Libs.AndroidX.Hilt.compiler
 }

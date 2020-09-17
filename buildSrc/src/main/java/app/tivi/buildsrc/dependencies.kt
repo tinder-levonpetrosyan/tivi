@@ -186,6 +186,8 @@ object Libs {
 
             const val tooling = "androidx.ui:ui-tooling:$version"
             const val test = "androidx.ui:ui-test:$version"
+
+            const val navigation = "androidx.compose.navigation:navigation:0.1.0-SNAPSHOT"
         }
 
         object Hilt {
